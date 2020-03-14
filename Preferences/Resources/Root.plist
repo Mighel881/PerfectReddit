@@ -22,7 +22,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<true/>
+			<false/>
 			<key>defaults</key>
 			<string>com.johnzaro.perfectredditprefs</string>
 			<key>key</key>
@@ -34,7 +34,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<true/>
+			<false/>
 			<key>defaults</key>
 			<string>com.johnzaro.perfectredditprefs</string>
 			<key>key</key>
@@ -52,7 +52,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<true/>
+			<false/>
 			<key>defaults</key>
 			<string>com.johnzaro.perfectredditprefs</string>
 			<key>key</key>
@@ -68,7 +68,7 @@
 			<key>libsparkcolourpicker</key>
 			<dict>
 				<key>defaults</key>
-				<string>com.johnzaro.perfectredditprefs</string>
+				<string>com.johnzaro.perfectredditprefs.colors</string>
 				<key>key</key>
 				<string>mainColor</string>
 				<key>fallback</key>
@@ -89,7 +89,7 @@
 			<key>libsparkcolourpicker</key>
 			<dict>
 				<key>defaults</key>
-				<string>com.johnzaro.perfectredditprefs</string>
+				<string>com.johnzaro.perfectredditprefs.colors</string>
 				<key>key</key>
 				<string>secondaryColor</string>
 				<key>fallback</key>
@@ -110,7 +110,7 @@
 			<key>libsparkcolourpicker</key>
 			<dict>
 				<key>defaults</key>
-				<string>com.johnzaro.perfectredditprefs</string>
+				<string>com.johnzaro.perfectredditprefs.colors</string>
 				<key>key</key>
 				<string>textColor</string>
 				<key>fallback</key>
@@ -128,6 +128,24 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>FOR THE CUSTOM THEME TO WORK YOU HAVE TO SELECT THE LIGHT THEME: MINT FROM THE REDDIT SETTINGS</string>
+        </dict>
+		<dict>
+        	<key>cell</key>
+			<string>PSGroupCell</string>
+        </dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>action</key>
+			<string>reset:</string>
+			<key>label</key>
+			<string>Reset All Settings</string>
+		</dict>
+		<dict>
+        	<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>WHEN RESETING, REDDIT AND SETTINGS APP WILL BE CLOSED</string>
         </dict>
 		<dict>
         	<key>cell</key>

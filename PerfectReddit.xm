@@ -158,20 +158,22 @@
 	{
 		pref = [[HBPreferences alloc] initWithIdentifier: @"com.johnzaro.perfectredditprefs"];
 
-		[pref registerBool: &disablePromotions default: YES forKey: @"disablePromotions"];
-		[pref registerBool: &disableSuggestions default: YES forKey: @"disableSuggestions"];
-		[pref registerBool: &customTheme default: YES forKey: @"customTheme"];
+		disablePromotions = [pref boolForKey: @"disablePromotions"];
+		disableSuggestions = [pref boolForKey: @"disableSuggestions"];
+		customTheme = [pref boolForKey: @"customTheme"];
 
 		if(disablePromotions) %init(disablePromotionsGroup);
 		if(disableSuggestions) %init(disableSuggestionsGroup);
 		if(customTheme)
 		{
-			NSDictionary *preferencesDictionary = [NSDictionary dictionaryWithContentsOfFile: @"/var/mobile/Library/Preferences/com.johnzaro.perfectredditprefs.plist"];
-		
-			mainColorString = [preferencesDictionary objectForKey: @"mainColor"];
-			secondaryColorString = [preferencesDictionary objectForKey: @"secondaryColor"];
-			textColorString = [preferencesDictionary objectForKey: @"textColor"];
-
+			NSDictionary *preferencesDictionary = [NSDictionary dictionaryWithContentsOfFile: @"/var/mobile/Library/Preferences/com.johnzaro.perfectredditprefs.colors.plist"];
+			if(preferencesDictionary)
+			{
+				mainColorString = [preferencesDictionary objectForKey: @"mainColor"];
+				secondaryColorString = [preferencesDictionary objectForKey: @"secondaryColor"];
+				textColorString = [preferencesDictionary objectForKey: @"textColor"];
+			}
+			
 			mainColor = [SparkColourPickerUtils colourWithString: mainColorString withFallback: @"#FF9400"];
 			secondaryColor = [SparkColourPickerUtils colourWithString: secondaryColorString withFallback: @"#FFFAE6"];
 			textColor = [SparkColourPickerUtils colourWithString: textColorString withFallback: @"#663B00"];

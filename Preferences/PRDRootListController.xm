@@ -1,4 +1,6 @@
 #import "PRDRootListController.h"
+#import "SparkColourPickerView.h"
+#import "spawn.h"
 
 int (*BKSTerminateApplicationForReasonAndReportWithDescription)(NSString *displayIdentifier, int reason, int something, int something2);
 
@@ -72,6 +74,29 @@ int (*BKSTerminateApplicationForReasonAndReportWithDescription)(NSString *displa
 {
 	if (!_specifiers) _specifiers = [self loadSpecifiersFromPlistName: @"Root" target: self];
 	return _specifiers;
+}
+
+
+- (void)reset: (PSSpecifier*)specifier
+{
+    [[[HBPreferences alloc] initWithIdentifier: @"com.johnzaro.perfectredditprefs"] removeAllObjects];
+
+    NSFileManager *manager = [NSFileManager defaultManager];
+    [manager removeItemAtPath:@"/var/mobile/Library/Preferences/com.johnzaro.perfectredditprefs.plist" error: nil];
+    [manager removeItemAtPath:@"/var/mobile/Library/Preferences/com.johnzaro.perfectredditprefs.colors.plist" error: nil];
+
+    [self closeReddit];
+    [self closeSettings];
+}
+
+- (void)closeSettings
+{
+	void *bk = dlopen("/System/Library/PrivateFrameworks/BackBoardServices.framework/BackBoardServices", RTLD_LAZY);
+	if (bk)
+    {
+        BKSTerminateApplicationForReasonAndReportWithDescription = (int (*)(NSString*, int, int, int))dlsym(bk, "BKSTerminateApplicationForReasonAndReportWithDescription");
+        BKSTerminateApplicationForReasonAndReportWithDescription(@"com.apple.Preferences", 1, 0, 0);
+    }
 }
 
 - (void)closeReddit

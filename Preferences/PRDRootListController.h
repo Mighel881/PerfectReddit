@@ -23,6 +23,7 @@
 @property(nonatomic, retain) UIBarButtonItem *closeRedditButton;
 @property(nonatomic, retain) UILabel *titleLabel;
 - (void)closeReddit;
+- (void)closeSettings;
 @end
 
 @interface MFMailComposeViewController: UINavigationController

@@ -8,6 +8,7 @@ PerfectRedditPrefs_FILES = PRDAppearanceSettings.m PRDRootHeaderView.mm PRDRootL
 PerfectRedditPrefs_INSTALL_PATH = /Library/PreferenceBundles
 PerfectRedditPrefs_FRAMEWORKS = UIKit
 PerfectRedditPrefs_PRIVATE_FRAMEWORKS = Preferences
+PerfectRedditPrefs_LIBRARIES = sparkcolourpicker
 PerfectRedditPrefs_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 PerfectRedditPrefs_EXTRA_FRAMEWORKS = Cephei CepheiPrefs
 
