@@ -79,14 +79,27 @@ int (*BKSTerminateApplicationForReasonAndReportWithDescription)(NSString *displa
 
 - (void)reset: (PSSpecifier*)specifier
 {
-    [[[HBPreferences alloc] initWithIdentifier: @"com.johnzaro.perfectredditprefs"] removeAllObjects];
+    UIAlertController *reset = [UIAlertController
+        alertControllerWithTitle: @"PerfectReddit"
+		message: @"Do you really want to Reset All Settings?"
+		preferredStyle: UIAlertControllerStyleAlert];
+	UIAlertAction *confirmAction = [UIAlertAction actionWithTitle: @"Confirm" style: UIAlertActionStyleDestructive handler:
+        ^(UIAlertAction * action)
+        {
+            [[[HBPreferences alloc] initWithIdentifier: @"com.johnzaro.perfectredditprefs"] removeAllObjects];
 
-    NSFileManager *manager = [NSFileManager defaultManager];
-    [manager removeItemAtPath:@"/var/mobile/Library/Preferences/com.johnzaro.perfectredditprefs.plist" error: nil];
-    [manager removeItemAtPath:@"/var/mobile/Library/Preferences/com.johnzaro.perfectredditprefs.colors.plist" error: nil];
+            NSFileManager *manager = [NSFileManager defaultManager];
+            [manager removeItemAtPath:@"/var/mobile/Library/Preferences/com.johnzaro.perfectredditprefs.plist" error: nil];
+            [manager removeItemAtPath:@"/var/mobile/Library/Preferences/com.johnzaro.perfectredditprefs.colors.plist" error: nil];
 
-    [self closeReddit];
-    [self closeSettings];
+            [self closeReddit];
+            [self closeSettings];
+        }];
+
+	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle: @"Cancel" style: UIAlertActionStyleCancel handler: nil];
+	[reset addAction: confirmAction];
+	[reset addAction: cancelAction];
+	[self presentViewController: reset animated: YES completion: nil];
 }
 
 - (void)closeSettings

@@ -1,5 +1,16 @@
 #import "PerfectReddit.h"
 
+#import <Cephei/HBPreferences.h>
+#import "SparkColourPickerUtils.h"
+
+static HBPreferences *pref;
+static BOOL disablePromotions;
+static BOOL disableSuggestions;
+static BOOL customTheme;
+static UIColor *mainColor;
+static UIColor *secondaryColor;
+static UIColor *textColor;
+
 %group disablePromotionsGroup
 
 	%hook Post
@@ -167,16 +178,10 @@
 		if(customTheme)
 		{
 			NSDictionary *preferencesDictionary = [NSDictionary dictionaryWithContentsOfFile: @"/var/mobile/Library/Preferences/com.johnzaro.perfectredditprefs.colors.plist"];
-			if(preferencesDictionary)
-			{
-				mainColorString = [preferencesDictionary objectForKey: @"mainColor"];
-				secondaryColorString = [preferencesDictionary objectForKey: @"secondaryColor"];
-				textColorString = [preferencesDictionary objectForKey: @"textColor"];
-			}
 			
-			mainColor = [SparkColourPickerUtils colourWithString: mainColorString withFallback: @"#FF9400"];
-			secondaryColor = [SparkColourPickerUtils colourWithString: secondaryColorString withFallback: @"#FFFAE6"];
-			textColor = [SparkColourPickerUtils colourWithString: textColorString withFallback: @"#663B00"];
+			mainColor = [SparkColourPickerUtils colourWithString: [preferencesDictionary objectForKey: @"mainColor"] withFallback: @"#FF9400"];
+			secondaryColor = [SparkColourPickerUtils colourWithString: [preferencesDictionary objectForKey: @"secondaryColor"] withFallback: @"#FFFAE6"];
+			textColor = [SparkColourPickerUtils colourWithString: [preferencesDictionary objectForKey: @"textColor"] withFallback: @"#663B00"];
 			
 			%init(customThemeGroup);
 		}

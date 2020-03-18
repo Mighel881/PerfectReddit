@@ -47,6 +47,8 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>CUSTOM THEME</string>
+			<key>footerText</key>
+			<string>FOR THE CUSTOM THEME TO WORK YOU HAVE TO SELECT THE LIGHT THEME: MINT FROM THE REDDIT SETTINGS</string>
         </dict>
 		<dict>
 			<key>cell</key>
@@ -126,12 +128,8 @@
 		<dict>
         	<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>FOR THE CUSTOM THEME TO WORK YOU HAVE TO SELECT THE LIGHT THEME: MINT FROM THE REDDIT SETTINGS</string>
-        </dict>
-		<dict>
-        	<key>cell</key>
-			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>WHEN RESETING, RESPRING WILL OCCUR</string>
         </dict>
 		<dict>
 			<key>cell</key>
@@ -141,12 +139,6 @@
 			<key>label</key>
 			<string>Reset All Settings</string>
 		</dict>
-		<dict>
-        	<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>WHEN RESETING, REDDIT AND SETTINGS APP WILL BE CLOSED</string>
-        </dict>
 		<dict>
         	<key>cell</key>
 			<string>PSGroupCell</string>
@@ -168,6 +160,8 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>ABOUT ME</string>
+			<key>footerText</key>
+			<string>© 2020 John Zarogiannis (johnzaro)</string>
         </dict>
 		<dict>
 			<key>big</key>
@@ -211,12 +205,6 @@
 			<key>url</key>
    	 		<string>https://paypal.me/JohnZarogiannis</string>
         </dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>© 2020 John Zarogiannis (johnzaro)</string>
-		</dict>
 	</array>
 	<key>title</key>
 	<string>PerfectSettings13</string>
