@@ -168,6 +168,12 @@ static UIColor *textColor;
 	@autoreleasepool
 	{
 		pref = [[HBPreferences alloc] initWithIdentifier: @"com.johnzaro.perfectredditprefs"];
+		[pref registerDefaults:
+		@{
+			@"disablePromotions": @NO,
+			@"disableSuggestions": @NO,
+			@"customTheme": @NO
+    	}];
 
 		disablePromotions = [pref boolForKey: @"disablePromotions"];
 		disableSuggestions = [pref boolForKey: @"disableSuggestions"];
