@@ -6,6 +6,8 @@
 static HBPreferences *pref;
 static BOOL disablePromotions;
 static BOOL disableSuggestions;
+static BOOL disableCommentHiding;
+static BOOL hideCoinButton;
 static BOOL customTheme;
 static UIColor *mainColor;
 static UIColor *secondaryColor;
@@ -35,6 +37,42 @@ static UIColor *textColor;
 	- (_Bool)isHiddenByUserWithAccountSettings:(id)arg1
 	{
 		return YES;
+	}
+
+	%end
+
+%end
+
+%group disableCommentHidingGroup
+
+	%hook CommentTreeHeaderNode
+
+	- (void)didSingleTap: (id)arg
+	{
+
+	}
+
+	- (void)didLongPress: (id)arg
+	{
+
+	}
+
+	- (void)didLongTapComment: (id)arg
+	{
+
+	}
+
+	%end
+
+%end
+
+%group hideCoinButtonGroup
+
+	%hook CoinSaleEntryContainer
+
+	- (id)init
+	{
+		return nil;
 	}
 
 	%end
@@ -172,15 +210,21 @@ static UIColor *textColor;
 		@{
 			@"disablePromotions": @NO,
 			@"disableSuggestions": @NO,
+			@"disableCommentHiding": @NO,
+			@"hideCoinButton": @NO,
 			@"customTheme": @NO
     	}];
 
 		disablePromotions = [pref boolForKey: @"disablePromotions"];
 		disableSuggestions = [pref boolForKey: @"disableSuggestions"];
+		disableCommentHiding = [pref boolForKey: @"disableCommentHiding"];
+		hideCoinButton = [pref boolForKey: @"hideCoinButton"];
 		customTheme = [pref boolForKey: @"customTheme"];
 
 		if(disablePromotions) %init(disablePromotionsGroup);
 		if(disableSuggestions) %init(disableSuggestionsGroup);
+		if(disableCommentHiding) %init(disableCommentHidingGroup);
+		if(hideCoinButton) %init(hideCoinButtonGroup, CoinSaleEntryContainer = NSClassFromString(@"Reddit.CoinSaleEntryContainer"));
 		if(customTheme)
 		{
 			NSDictionary *preferencesDictionary = [NSDictionary dictionaryWithContentsOfFile: @"/var/mobile/Library/Preferences/com.johnzaro.perfectredditprefs.colors.plist"];
