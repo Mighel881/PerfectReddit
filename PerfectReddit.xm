@@ -120,12 +120,12 @@ static UIColor *textColor;
 		return mainColor;
 	}
 
-	- (id)actionColor
+	- (id)linkTextColor
 	{
 		return mainColor;
 	}
 
-	- (id)lineColor
+	- (id)actionColor
 	{
 		return mainColor;
 	}
@@ -136,6 +136,7 @@ static UIColor *textColor;
 	}
 
 	// ------------------------------- SECONDARY-LIGHT COLOR -------------------------------
+
 	- (id)canvasColor
 	{
 		return secondaryColor;
@@ -156,6 +157,11 @@ static UIColor *textColor;
 		return secondaryColor;
 	}
 
+	- (id)lineColor
+	{
+		return secondaryColor;
+	}
+
 	- (id)highlightColor
 	{
 		return secondaryColor;
@@ -172,17 +178,13 @@ static UIColor *textColor;
 	}
 
 	// ------------------------------- TEXT-DARK COLOR -------------------------------
+	
 	- (id)bodyTextColor
 	{
 		return textColor;
 	}
 
 	- (id)buttonTextColor
-	{
-		return textColor;
-	}
-
-	- (id)linkTextColor
 	{
 		return textColor;
 	}
