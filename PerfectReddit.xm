@@ -81,120 +81,129 @@ static UIColor *textColor;
 
 %group customThemeGroup
 
-	%hook MintTheme
-
 	// ------------------------------- MAIN COLOR -------------------------------
 
-	- (id)inactiveColor
+	%hook _TtC8RedditUI10ColorGuide
+
+	- (UIColor*)tone1
 	{
 		return mainColor;
 	}
 
-	- (id)logoColor
+	%end
+
+	%hook MintTheme
+
+	- (UIColor*)inactiveColor
 	{
 		return mainColor;
 	}
 
-	- (id)activeColor
+	- (UIColor*)logoColor
 	{
 		return mainColor;
 	}
 
-	- (id)buttonColor
+	- (UIColor*)activeColor
 	{
 		return mainColor;
 	}
 
-	- (id)shareSheetDimmerColor
+	- (UIColor*)buttonColor
 	{
 		return mainColor;
 	}
 
-	- (id)dimmerColor
+	- (UIColor*)shareSheetDimmerColor
 	{
 		return mainColor;
 	}
 
-	- (id)toastColor
+	- (UIColor*)dimmerColor
 	{
 		return mainColor;
 	}
 
-	- (id)linkTextColor
+	- (UIColor*)toastColor
 	{
 		return mainColor;
 	}
 
-	- (id)actionColor
+	- (UIColor*)linkTextColor
 	{
 		return mainColor;
 	}
 
-	- (id)navIconColor
+	- (UIColor*)actionColor
+	{
+		return mainColor;
+	}
+
+	- (UIColor*)navIconColor
 	{
 		return mainColor;
 	}
 
 	// ------------------------------- SECONDARY-LIGHT COLOR -------------------------------
 
-	- (id)canvasColor
+	- (UIColor*)canvasColor
 	{
 		return secondaryColor;
 	}
 
-	- (id)fieldColor
+	- (UIColor*)fieldColor
 	{
 		return secondaryColor;
 	}
 
-	- (id)buttonHighlightTextColor
+	- (UIColor*)buttonHighlightTextColor
 	{
 		return secondaryColor;
 	}
 
-	- (id)cellHighlightColor
+	- (UIColor*)cellHighlightColor
 	{
 		return secondaryColor;
 	}
 
-	- (id)lineColor
+	- (UIColor*)lineColor
 	{
 		return secondaryColor;
 	}
 
-	- (id)highlightColor
+	- (UIColor*)highlightColor
 	{
 		return secondaryColor;
 	}
 
-	- (id)listBackgroundColor
+	- (UIColor*)listBackgroundColor
 	{
 		return secondaryColor;
 	}
 
-	- (id)loadingPlaceHolderColor
+	- (UIColor*)loadingPlaceHolderColor
 	{
 		return secondaryColor;
 	}
 
 	// ------------------------------- TEXT-DARK COLOR -------------------------------
 	
-	- (id)bodyTextColor
+	- (UIColor*)bodyTextColor
 	{
 		return textColor;
 	}
 
-	- (id)buttonTextColor
+	- (UIColor*)buttonTextColor
 	{
 		return textColor;
 	}
 
-	- (id)metaTextColor
+	- (UIColor*)metaTextColor
 	{
 		return textColor;
 	}
 
-	- (id)flairTextColor
+	- (UIColor*)flairTextColor
 	{
 		return textColor;
 	}
