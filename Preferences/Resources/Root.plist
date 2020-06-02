@@ -64,7 +64,7 @@
 			<key>key</key>
 			<string>hideCoinButton</string>
 			<key>label</key>
-			<string>Hide Coin Button Completely</string>
+			<string>Hide Coin Button</string>
 		</dict>
 		<dict>
         	<key>cell</key>

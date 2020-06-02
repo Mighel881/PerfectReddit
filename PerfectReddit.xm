@@ -235,7 +235,7 @@ static UIColor *textColor;
 		if(disablePromotions) %init(disablePromotionsGroup);
 		if(disableSuggestions) %init(disableSuggestionsGroup);
 		if(disableCommentHiding) %init(disableCommentHidingGroup);
-		if(hideCoinButton) %init(hideCoinButtonGroup, CoinSaleEntryContainer = NSClassFromString(@"Reddit.CoinSaleEntryContainer"));
+		if(hideCoinButton) %init(hideCoinButtonGroup, CoinSaleEntryContainer = NSClassFromString(@"Economy.CoinSaleEntryContainer"));
 		if(customTheme)
 		{
 			NSDictionary *preferencesDictionary = [NSDictionary dictionaryWithContentsOfFile: @"/var/mobile/Library/Preferences/com.johnzaro.perfectredditprefs.colors.plist"];
