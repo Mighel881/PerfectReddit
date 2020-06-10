@@ -67,6 +67,18 @@
 			<string>Hide Coin Button</string>
 		</dict>
 		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.johnzaro.perfectredditprefs</string>
+			<key>key</key>
+			<string>hideLiveBroadcasts</string>
+			<key>label</key>
+			<string>Hide Live Broadcasts</string>
+		</dict>
+		<dict>
         	<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>

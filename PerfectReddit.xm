@@ -1,5 +1,4 @@
 #import "PerfectReddit.h"
-
 #import <Cephei/HBPreferences.h>
 #import "SparkColourPickerUtils.h"
 
@@ -8,6 +7,7 @@ static BOOL disablePromotions;
 static BOOL disableSuggestions;
 static BOOL disableCommentHiding;
 static BOOL hideCoinButton;
+static BOOL hideLiveBroadcasts;
 static BOOL customTheme;
 static UIColor *mainColor;
 static UIColor *secondaryColor;
@@ -20,10 +20,9 @@ static UIColor *textColor;
 	- (BOOL)isHidden
 	{
 		if([self isKindOfClass:[%c(AdPost) class]])
-		{
 			return YES;
-		}
-		return %orig;
+		else
+			return %orig;
 	}
 
 	%end
@@ -34,7 +33,7 @@ static UIColor *textColor;
 
 	%hook Carousel
 
-	- (_Bool)isHiddenByUserWithAccountSettings:(id)arg1
+	- (BOOL)isHiddenByUserWithAccountSettings: (id)arg1
 	{
 		return YES;
 	}
@@ -60,6 +59,19 @@ static UIColor *textColor;
 	- (void)didLongTapComment: (id)arg
 	{
 
+	}
+
+	%end
+
+%end
+
+%group hideLiveBroadcastsGroup
+
+	%hook StreamingUnitDataProvider
+
+	- (BOOL)shouldHideUnit
+	{
+		return YES;
 	}
 
 	%end
@@ -223,6 +235,7 @@ static UIColor *textColor;
 			@"disableSuggestions": @NO,
 			@"disableCommentHiding": @NO,
 			@"hideCoinButton": @NO,
+			@"hideLiveBroadcasts": @NO,
 			@"customTheme": @NO
     	}];
 
@@ -230,12 +243,19 @@ static UIColor *textColor;
 		disableSuggestions = [pref boolForKey: @"disableSuggestions"];
 		disableCommentHiding = [pref boolForKey: @"disableCommentHiding"];
 		hideCoinButton = [pref boolForKey: @"hideCoinButton"];
+		hideLiveBroadcasts = [pref boolForKey: @"hideLiveBroadcasts"];
 		customTheme = [pref boolForKey: @"customTheme"];
 
-		if(disablePromotions) %init(disablePromotionsGroup);
-		if(disableSuggestions) %init(disableSuggestionsGroup);
-		if(disableCommentHiding) %init(disableCommentHidingGroup);
-		if(hideCoinButton) %init(hideCoinButtonGroup, CoinSaleEntryContainer = NSClassFromString(@"Economy.CoinSaleEntryContainer"));
+		if(disablePromotions)
+			%init(disablePromotionsGroup);
+		if(disableSuggestions)
+			%init(disableSuggestionsGroup);
+		if(disableCommentHiding)
+			%init(disableCommentHidingGroup);
+		if(hideCoinButton)
+			%init(hideCoinButtonGroup, CoinSaleEntryContainer = NSClassFromString(@"Economy.CoinSaleEntryContainer"));
+		if(hideLiveBroadcasts)
+			%init(hideLiveBroadcastsGroup);
 		if(customTheme)
 		{
 			NSDictionary *preferencesDictionary = [NSDictionary dictionaryWithContentsOfFile: @"/var/mobile/Library/Preferences/com.johnzaro.perfectredditprefs.colors.plist"];
