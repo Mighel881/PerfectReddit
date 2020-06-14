@@ -40,7 +40,7 @@
 			<key>key</key>
 			<string>disableSuggestions</string>
 			<key>label</key>
-			<string>Disable All Suggstions</string>
+			<string>Disable All Suggestions</string>
 		</dict>
 		<dict>
 			<key>cell</key>
